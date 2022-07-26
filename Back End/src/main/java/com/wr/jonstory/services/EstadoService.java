@@ -15,7 +15,7 @@ public class EstadoService {
     private EstadoRespository respository;
 
     public List<Estado> findAll(){
-        return repository.findAll();
+        return respository.findAll();
     }
 
 }

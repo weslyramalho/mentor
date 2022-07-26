@@ -18,9 +18,6 @@ public class PedidoService {
         return repository.findAll();
     }
 
-    public Pedido findById(Integer id){
-        return repository.findById(id);
-    }
 
     public Pedido insert(Pedido obj){
         return repository.save(obj);

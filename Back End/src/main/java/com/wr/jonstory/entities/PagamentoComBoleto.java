@@ -1,5 +1,7 @@
 package com.wr.jonstory.entities;
 
+import com.wr.jonstory.entities.enums.EstadoPagamento;
+
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -15,7 +17,7 @@ public class PagamentoComBoleto extends Pagamento{
     public PagamentoComBoleto() {
     }
 
-    public PagamentoComBoleto(Integer id, Integer estado, Pedido pedido, Date dataVencimento, Date dataPagamento) {
+    public PagamentoComBoleto(Integer id, EstadoPagamento estado, Pedido pedido, Date dataVencimento, Date dataPagamento) {
         super(id, estado, pedido);
         this.dataVencimento = dataVencimento;
         this.dataPagamento = dataPagamento;

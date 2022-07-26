@@ -12,8 +12,10 @@ public class PagamentoComCartao {
 
     @Autowired
     private PagamentoComCartaoRepository repository;
-
+/*
     public List<PagamentoComCartao> findAll(){
         return repository.findAll();
     }
+
+ */
 }

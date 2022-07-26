@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value = "/clientes")
 public class ClienteController {
@@ -17,8 +19,8 @@ public class ClienteController {
     private ClienteService service;
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<?> find(@PathVariable Integer id){
-        Cliente obj = service.buscar(id);
+    public ResponseEntity<List<Cliente>> find(@PathVariable Integer id){
+        List<Cliente> obj = service.findAll();
         return ResponseEntity.ok().body(obj);
     }
 }

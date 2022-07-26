@@ -1,5 +1,7 @@
 package com.wr.jonstory.entities;
 
+import com.wr.jonstory.entities.enums.EstadoPagamento;
+
 import javax.persistence.Entity;
 
 @Entity
@@ -10,7 +12,7 @@ public class PagamentoComCartao extends Pagamento{
 
     }
 
-    public PagamentoComCartao(Integer id, Integer estado, Pedido pedido, Integer quantidadeDeParcelas) {
+    public PagamentoComCartao(Integer id, EstadoPagamento estado, Pedido pedido, Integer quantidadeDeParcelas) {
         super(id, estado, pedido);
         this.quantidadeDeParcelas = quantidadeDeParcelas;
     }

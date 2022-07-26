@@ -17,8 +17,8 @@ public class ItemPedido {
     }
 
     public ItemPedido(ItemPedidoPk id, Double desconto, Integer quantidade, Double preco) {
-        id.setPedido(pedido);
-        id.setProduto(produto);
+        //id.setPedido(pedido);
+       // id.setProduto(produto);
         this.desconto = desconto;
         this.quantidade = quantidade;
         this.preco = preco;
