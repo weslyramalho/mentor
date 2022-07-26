@@ -7,6 +7,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 @Entity
 public class Cliente implements Serializable {
    @Id
@@ -15,7 +20,11 @@ public class Cliente implements Serializable {
     private String nome;
     private String email;
     private String cpfoucnpj;
-    private TipoCliente tipo;
+    private Integer tipo;
+
+    private List<Endereco> enderecos= new ArrayList<>();
+
+    private Set<String> telefones = new HashSet<>();
     public Cliente() {
     }
 
@@ -24,7 +33,7 @@ public class Cliente implements Serializable {
         this.nome = nome;
         this.email = email;
         this.cpfoucnpj = cpfoucnpj;
-        this.tipo = tipo;
+        this.tipo = tipo.getCod();
     }
 
     public Integer getId() {
@@ -60,10 +69,26 @@ public class Cliente implements Serializable {
     }
 
     public TipoCliente getTipo() {
-        return tipo;
+        return TipoCliente.toEnum(tipo);
     }
 
     public void setTipo(TipoCliente tipo) {
-        this.tipo = tipo;
+        this.tipo = tipo.getCod();
+    }
+
+    public List<Endereco> getEnderecos() {
+        return enderecos;
+    }
+
+    public void setEnderecos(List<Endereco> enderecos) {
+        this.enderecos = enderecos;
+    }
+
+    public Set<String> getTelefones() {
+        return telefones;
+    }
+
+    public void setTelefones(Set<String> telefones) {
+        this.telefones = telefones;
     }
 }
