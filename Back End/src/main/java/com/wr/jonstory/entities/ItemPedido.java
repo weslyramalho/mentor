@@ -16,14 +16,20 @@ public class ItemPedido {
     public ItemPedido() {
     }
 
-    public ItemPedido(ItemPedidoPk id, Double desconto, Integer quantidade, Double preco) {
-        //id.setPedido(pedido);
-       // id.setProduto(produto);
+    public ItemPedido(Pedido pedido, Produto produto, Double desconto, Integer quantidade, Double preco) {
+        id.setPedido(pedido);
+        id.setProduto(produto);
         this.desconto = desconto;
         this.quantidade = quantidade;
         this.preco = preco;
     }
 
+    public Pedido getPedido(){
+        return id.getPedido();
+    }
+    public Produto getProduto(){
+        return id.getProduto();
+    }
     public ItemPedidoPk getId() {
         return id;
     }
