@@ -2,10 +2,7 @@ package com.wr.jonstory.entities;
 
 import com.wr.jonstory.entities.enums.TipoCliente;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -21,9 +18,10 @@ public class Cliente implements Serializable {
     private String email;
     private String cpfoucnpj;
     private Integer tipo;
-
+    @OneToMany(mappedBy = "cliente")
     private List<Endereco> enderecos= new ArrayList<>();
-
+    @ElementCollection
+    @CollectionTable(name = "TELEFONE")
     private Set<String> telefones = new HashSet<>();
     public Cliente() {
     }

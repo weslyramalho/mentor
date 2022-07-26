@@ -1,9 +1,6 @@
 package com.wr.jonstory.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -16,8 +13,11 @@ public class Endereco implements Serializable {
     private String complemento;
     private String bairro;
     private String cep;
-
+    @ManyToOne
+    @JoinColumn(name = "cliente_id")
     private Cliente cliente;
+    @ManyToOne
+    @JoinColumn(name = "cidade_id")
     private Cidade cidade;
 
     public Endereco() {
