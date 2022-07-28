@@ -1,5 +1,6 @@
 package com.wr.jonstory.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -8,14 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Pedido implements Serializable {
+public class Categoria implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
     @JsonManagedReference
     @ManyToMany(mappedBy = "categorias")
-    private List<Produto> produtos= new ArrayList<>();
+    private List<Produto> produtos = new ArrayList<>();
 
     public Categoria() {
     }

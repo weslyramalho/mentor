@@ -1,6 +1,6 @@
 package com.wr.jonstory.services;
 
-import com.wr.jonstory.entities.Categoria;
+
 import com.wr.jonstory.entities.Produto;
 import com.wr.jonstory.repositories.CategoriaRepository;
 import com.wr.jonstory.repositories.ProdutoRepository;
@@ -51,6 +51,8 @@ public class ProdutoService {
     private void updataData(Produto entity, Produto obj){
 
         entity.setNome(obj.getNome());
+        entity.setPreco(obj.getPreco());
+        entity.setCategorias(obj.getCategorias());
     }
 
 }
