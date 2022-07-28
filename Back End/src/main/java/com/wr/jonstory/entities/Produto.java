@@ -1,6 +1,7 @@
 package com.wr.jonstory.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -14,9 +15,10 @@ public class Produto implements Serializable {
     private Long id;
     private String nome;
     private Double preco;
-    @JsonBackReference
+
     @ManyToMany
     private List<Categoria> categorias = new ArrayList<>();
+    @JsonIgnore
     @ManyToMany
     private List<Pedido> pedidos = new ArrayList<>();
     public Produto() {

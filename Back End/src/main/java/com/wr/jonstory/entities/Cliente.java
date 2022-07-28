@@ -1,9 +1,12 @@
 package com.wr.jonstory.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.wr.jonstory.entities.enums.TipoCliente;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -18,6 +21,9 @@ public class Cliente implements Serializable {
     private String telefone;
     @OneToOne
     private Endereco enderco;
+    @JsonIgnore
+    @OneToMany
+    private List<Pedido> pedidos = new ArrayList<>();
 
     public Cliente() {
 
@@ -87,5 +93,13 @@ public class Cliente implements Serializable {
 
     public void setEnderco(Endereco enderco) {
         this.enderco = enderco;
+    }
+
+    public List<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(List<Pedido> pedidos) {
+        this.pedidos = pedidos;
     }
 }

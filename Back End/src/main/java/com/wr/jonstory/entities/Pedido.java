@@ -1,5 +1,8 @@
 package com.wr.jonstory.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.*;
@@ -10,9 +13,12 @@ public class Pedido implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @JsonFormat(pattern = "dd/MM/yyyy hh:mm")
     private Date instante;
+
     @OneToOne
     private Pagamento pagamento;
+
     @OneToOne
     private Cliente cliente;
     @ManyToMany

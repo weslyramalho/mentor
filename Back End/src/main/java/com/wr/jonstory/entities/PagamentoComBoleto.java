@@ -1,5 +1,6 @@
 package com.wr.jonstory.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.wr.jonstory.entities.enums.EstadoPagamento;
 
 import javax.persistence.Entity;
@@ -9,8 +10,10 @@ import java.util.Date;
 
 @Entity
 public class PagamentoComBoleto extends Pagamento{
+    @JsonFormat(pattern = "dd/MM/yyyy hh:mm")
     @Temporal(TemporalType.DATE)
     private Date dataVencimento;
+    @JsonFormat(pattern = "dd/MM/yyyy hh:mm")
     @Temporal(TemporalType.DATE)
     private Date dataPagamento;
 

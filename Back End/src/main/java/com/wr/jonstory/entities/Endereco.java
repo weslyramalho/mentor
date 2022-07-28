@@ -1,5 +1,7 @@
 package com.wr.jonstory.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -14,11 +16,12 @@ public class Endereco implements Serializable {
     private String bairro;
     private String estado;
     private String cep;
+    @JsonIgnore
     @OneToOne
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
-    public Endereco() {
+    public Endereco(long l, String castanha, String canaa, int i, String leste, String bahia, String s) {
 
     }
 

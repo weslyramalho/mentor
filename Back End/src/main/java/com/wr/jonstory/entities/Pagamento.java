@@ -1,5 +1,7 @@
 package com.wr.jonstory.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.wr.jonstory.entities.enums.EstadoPagamento;
 
 import javax.persistence.*;
@@ -11,6 +13,7 @@ public class Pagamento implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Integer estado;
+    @JsonIgnore
     @OneToOne
     @MapsId
     private Pedido pedido;
