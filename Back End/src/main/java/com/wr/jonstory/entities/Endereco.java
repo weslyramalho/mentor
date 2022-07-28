@@ -1,7 +1,5 @@
 package com.wr.jonstory.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -9,39 +7,37 @@ import java.io.Serializable;
 public class Endereco implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     private String logradouro;
-    private String nome;
-    private String complemento;
+    private String cidade;
+    private Integer numero;
     private String bairro;
+    private String estado;
     private String cep;
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
-    @JsonBackReference
-    @ManyToOne
-    @JoinColumn(name = "cidade_id")
-    private Cidade cidade;
 
     public Endereco() {
+
     }
 
-    public Endereco(Integer id, String logradouro, String nome, String complemento, String bairro, String cep, Cliente cliente, Cidade cidade) {
+    public Endereco(Long id, String logradouro, String cidade, Integer numero, String bairro, String estado, String cep, Cliente cliente) {
         this.id = id;
         this.logradouro = logradouro;
-        this.nome = nome;
-        this.complemento = complemento;
+        this.cidade = cidade;
+        this.numero = numero;
         this.bairro = bairro;
+        this.estado = estado;
         this.cep = cep;
         this.cliente = cliente;
-        this.cidade = cidade;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -53,20 +49,20 @@ public class Endereco implements Serializable {
         this.logradouro = logradouro;
     }
 
-    public String getNome() {
-        return nome;
+    public String getCidade() {
+        return cidade;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
     }
 
-    public String getComplemento() {
-        return complemento;
+    public Integer getNumero() {
+        return numero;
     }
 
-    public void setComplemento(String complemento) {
-        this.complemento = complemento;
+    public void setNumero(Integer numero) {
+        this.numero = numero;
     }
 
     public String getBairro() {
@@ -75,6 +71,14 @@ public class Endereco implements Serializable {
 
     public void setBairro(String bairro) {
         this.bairro = bairro;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     public String getCep() {
@@ -89,17 +93,8 @@ public class Endereco implements Serializable {
         return cliente;
     }
 
-    public Cidade getCidade() {
-        return cidade;
-    }
-
-    public void setCidade(Cidade cidade) {
-        this.cidade = cidade;
-    }
-
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
-
-
     }
+
 }

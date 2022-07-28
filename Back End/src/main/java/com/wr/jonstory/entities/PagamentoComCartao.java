@@ -6,22 +6,22 @@ import javax.persistence.Entity;
 
 @Entity
 public class PagamentoComCartao extends Pagamento{
-    private Integer quantidadeDeParcelas;
+    private Integer parcelas;
 
     public PagamentoComCartao() {
 
     }
 
-    public PagamentoComCartao(Integer id, EstadoPagamento estado, Pedido pedido, Integer quantidadeDeParcelas) {
+        public PagamentoComCartao(Long id, EstadoPagamento estado, Pedido pedido, Integer parcelas) {
         super(id, estado, pedido);
-        this.quantidadeDeParcelas = quantidadeDeParcelas;
+        this.parcelas = parcelas;
     }
 
-    public Integer getQuantidadeDeParcelas() {
-        return quantidadeDeParcelas;
+    public Integer getParcelas() {
+        return parcelas;
     }
 
-    public void setQuantidadeDeParcelas(Integer quantidadeDeParcelas) {
-        this.quantidadeDeParcelas = quantidadeDeParcelas;
+    public void setParcelas(Integer parcelas) {
+        this.parcelas = parcelas;
     }
 }

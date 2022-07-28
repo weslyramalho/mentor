@@ -4,32 +4,32 @@ import com.wr.jonstory.entities.enums.EstadoPagamento;
 
 import javax.persistence.*;
 import java.io.Serializable;
-@Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Pagamento implements Serializable {
-    @Id
-    private Integer id;
-    private Integer estado;
 
-    @JoinColumn(name = "pedido_id")
+@Entity
+public class Pagamento implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private Integer estado;
     @OneToOne
     @MapsId
     private Pedido pedido;
 
     public Pagamento() {
+
     }
 
-    public Pagamento(Integer id, EstadoPagamento estado, Pedido pedido) {
+    public Pagamento(Long id, EstadoPagamento estado, Pedido pedido) {
         this.id = id;
         this.estado = estado.getCod();
         this.pedido = pedido;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -49,4 +49,3 @@ public abstract class Pagamento implements Serializable {
         this.pedido = pedido;
     }
 }
-

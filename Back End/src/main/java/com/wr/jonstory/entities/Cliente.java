@@ -1,49 +1,43 @@
 package com.wr.jonstory.entities;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.wr.jonstory.entities.enums.TipoCliente;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 public class Cliente implements Serializable {
-   @Id
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
-   private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String nome;
     private String email;
-    private String cpfoucnpj;
+    private String cnpjoucpf;
     private Integer tipo;
-    @JsonManagedReference
-    @OneToMany(mappedBy = "cliente")
-    private List<Endereco> enderecos= new ArrayList<>();
-    @ElementCollection
-    @CollectionTable(name = "TELEFONE")
-    private Set<String> telefones = new HashSet<>();
+    private String telefone;
+    @OneToOne
+    private Endereco enderco;
 
-    @ManyToMany(mappedBy = "cliente")
-    private List<Pedido> pedidos = new ArrayList<>();
     public Cliente() {
+
     }
 
-    public Cliente(Integer id, String nome, String email, String cpfoucnpj, TipoCliente tipo) {
+    public Cliente(Long id, String nome, String email, String cnpjoucpf, TipoCliente tipo, String telefone, Endereco endereco) {
         this.id = id;
         this.nome = nome;
         this.email = email;
-        this.cpfoucnpj = cpfoucnpj;
+        this.cnpjoucpf = cnpjoucpf;
         this.tipo = tipo.getCod();
+        this.telefone = telefone;
+        this.enderco = endereco;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -63,12 +57,12 @@ public class Cliente implements Serializable {
         this.email = email;
     }
 
-    public String getCpfoucnpj() {
-        return cpfoucnpj;
+    public String getCnpjoucpf() {
+        return cnpjoucpf;
     }
 
-    public void setCpfoucnpj(String cpfoucnpj) {
-        this.cpfoucnpj = cpfoucnpj;
+    public void setCnpjoucpf(String cnpjoucpf) {
+        this.cnpjoucpf = cnpjoucpf;
     }
 
     public TipoCliente getTipo() {
@@ -79,27 +73,19 @@ public class Cliente implements Serializable {
         this.tipo = tipo.getCod();
     }
 
-    public List<Endereco> getEnderecos() {
-        return enderecos;
+    public String getTelefone() {
+        return telefone;
     }
 
-    public void setEnderecos(List<Endereco> enderecos) {
-        this.enderecos = enderecos;
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
-    public Set<String> getTelefones() {
-        return telefones;
+    public Endereco getEnderco() {
+        return enderco;
     }
 
-    public void setTelefones(Set<String> telefones) {
-        this.telefones = telefones;
-    }
-
-    public List<Pedido> getPedidos() {
-        return pedidos;
-    }
-
-    public void setPedidos(List<Pedido> pedidos) {
-        this.pedidos = pedidos;
+    public void setEnderco(Endereco enderco) {
+        this.enderco = enderco;
     }
 }
