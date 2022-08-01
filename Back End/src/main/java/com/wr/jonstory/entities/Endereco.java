@@ -21,8 +21,7 @@ public class Endereco implements Serializable {
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
-    public Endereco(long l, String castanha, String canaa, int i, String leste, String bahia, String s) {
-
+    public Endereco() {
     }
 
     public Endereco(Long id, String logradouro, String cidade, Integer numero, String bairro, String estado, String cep, Cliente cliente) {

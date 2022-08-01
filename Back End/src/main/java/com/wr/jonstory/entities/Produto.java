@@ -15,7 +15,7 @@ public class Produto implements Serializable {
     private Long id;
     private String nome;
     private Double preco;
-
+    @JsonIgnore
     @ManyToMany
     private List<Categoria> categorias = new ArrayList<>();
     @JsonIgnore
