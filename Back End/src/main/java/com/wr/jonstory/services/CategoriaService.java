@@ -2,8 +2,10 @@ package com.wr.jonstory.services;
 
 import com.wr.jonstory.entities.Categoria;
 import com.wr.jonstory.repositories.CategoriaRepository;
+import com.wr.jonstory.services.exception.DataIntegrityException;
 import com.wr.jonstory.services.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,11 +33,12 @@ public class CategoriaService {
     }
 
     public void delete(Long id){
-        if (id == null){
-            throw new ObjectNotFoundException("Categoria não encontrada! id: "+ id
-                    + ", Tipo " + Categoria.class.getName());
+        findById(id);
+        try{
+            repository.deleteById(id);
+        }catch (DataIntegrityViolationException e){
+            throw new DataIntegrityException("Nao e possivel excluir uma categoria que possui produto");
         }
-        repository.deleteById(id);
     }
     public Categoria update(Long id, Categoria obj){
         Categoria entity = repository.getReferenceById(id);
